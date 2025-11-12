@@ -1,13 +1,16 @@
 import { useTransition } from "./context/TransitionContext";
 import EntryGate from "./pages/EntryGate";
 import Home from "./pages/Home";
+import Navbar from "./components/Navbar";
 import { motion, AnimatePresence } from "framer-motion";
 
 const App = () => {
   const { isEntered } = useTransition();
 
   return (
+   
     <div className="min-h-screen bg-black text-white">
+      {isEntered && <Navbar />}
       <AnimatePresence mode="wait">
         {!isEntered ? (
           <motion.div
@@ -30,6 +33,7 @@ const App = () => {
         )}
       </AnimatePresence>
     </div>
+    
   );
 };
 
