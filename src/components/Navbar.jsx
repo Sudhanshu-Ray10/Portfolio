@@ -1,10 +1,13 @@
 import React, { useEffect, useState, useRef } from "react";
-import { Link } from "react-scroll";
+import { Link, useNavigate } from "react-router-dom";
 import { FaBars, FaTimes, FaDownload } from "react-icons/fa";
 import { IoExitOutline } from "react-icons/io5";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTransition } from "../context/TransitionContext";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+  const { setIsEntered } = useTransition();
   const navLinks = [
     { to: "about", label: "About" },
     { to: "skills", label: "Skills" },
@@ -47,7 +50,7 @@ const Navbar = () => {
     <>
       {/* Navbar Wrapper */}
       <div
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 relative ${
           scrolled
             ? "bg-black/70 backdrop-blur-md shadow-lg"
             : "bg-transparent"
@@ -65,11 +68,7 @@ const Navbar = () => {
             {navLinks.map((link) => (
               <Link
                 key={link.to}
-                to={link.to}
-                smooth={true}
-                spy={true}
-                activeClass="active-style"
-                duration={500}
+                to={`/home#${link.to}`}
                 className="cursor-pointer hover:text-orange-400 transition-all"
               >
                 {link.label}
@@ -115,17 +114,13 @@ const Navbar = () => {
             animate={{ opacity: 1, scaleY: 1, y: 0 }}
             exit={{ opacity: 0, scaleY: 0, y: -50 }}
             transition={{ duration: 0.4, ease: "easeOut" }}
-            className="md:hidden flex flex-col items-center gap-5 bg-gray-900 text-white py-6 origin-top z-40 shadow-lg"
+            className="md:hidden flex flex-col items-center gap-5 absolute w-full bg-white  py-4 origin-top z-40 shadow-lg"
           >
             {navLinks.map((link) => (
               <Link
                 key={link.to}
-                to={link.to}
-                smooth={true}
-                spy={true}
-                duration={500}
+                to={`/home#${link.to}`}
                 onClick={() => setIsOpen(false)}
-                activeClass="active-style"
                 className="flex gap-3 text-lg font-medium hover:text-orange-400 transition-all"
               >
                 {link.label}
@@ -144,7 +139,11 @@ const Navbar = () => {
               </a>
 
               <button
-                onClick={() => setIsOpen(false)}
+                onClick={() =>{
+                  navigate("/");
+                  setIsOpen(false);
+                  setIsEntered(false)
+                }}
                 className="flex items-center justify-center gap-2 border-2 border-red-600 rounded-full px-4 py-2 hover:bg-red-600 transition-all"
               >
                 <IoExitOutline /> Exit
