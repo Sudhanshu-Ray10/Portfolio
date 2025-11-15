@@ -1,9 +1,11 @@
 import About from "./About";
 import Skills from "./Skills";
 
+
 const Home = () => {
   return (
     <div>
+
       <section id="about">
       <About/>
       

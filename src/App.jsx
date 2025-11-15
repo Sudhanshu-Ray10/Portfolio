@@ -3,16 +3,19 @@ import EntryGate from "./pages/EntryGate";
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
 import { motion, AnimatePresence } from "framer-motion";
+import { useLocation } from "react-router-dom";
 
 const App = () => {
   const { isEntered } = useTransition();
+    const location = useLocation();
+    const isGateRoute = location.pathname === "/";
 
   return (
    
     <div className="min-h-screen ">
-      {isEntered && <Navbar />}
+       {location.pathname === "/home" && <Navbar />}
       <AnimatePresence mode="wait">
-        {!isEntered ? (
+        {isGateRoute ? (
           <motion.div
             key="gate"
             initial={{ opacity: 1 }}

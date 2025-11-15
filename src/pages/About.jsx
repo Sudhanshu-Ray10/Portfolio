@@ -87,10 +87,11 @@ const About = () => {
           {/* Quote Box Improved */}
           <div className="border border-orange-400/70 rounded-2xl p-5 bg-white/50 shadow-sm">
             <p className="text-gray-700 text-lg font-medium text-center">
-              “विद्या ददाति विनयं, विनयाद् याति पात्रताम्।”
+              “सरस्वति नमस्तुभ्यं वरदे कामरूपिणि ।
+              विद्यारम्भं करिष्यामि सिद्धिर्भवतु मे सदा ॥”
             </p>
             <p className="text-sm text-gray-500 mt-1 text-center">
-              Knowledge brings humility, and from humility comes true worth
+             "Salutations to you, O Goddess Saraswati, the giver of boons and fulfiller of wishes. As I begin my studies, please bestow upon me the capacity of right understanding and may I always be successful"
             </p>
           </div>
 

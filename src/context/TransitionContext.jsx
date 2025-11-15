@@ -5,11 +5,7 @@ const TransitionContext = createContext(); // creates container
 export const TransitionProvider = ({ children }) => {
 
   // INITIAL STATE (read localStorage first)
-  const [isEntered, setIsEntered] = useState(() => {
-    const saved = localStorage.getItem("isEntered");
-    return saved === "true";  // initial return goes HERE
-  });
-
+  const [isEntered, setIsEntered] = useState(false);
   // UPDATE (change state + save in localStorage)
   const updateIsEntered = (value) => {
     setIsEntered(value);

@@ -5,9 +5,12 @@ import FireArrows from "../components/EntryGate/FireArrows";
 import GateOverlay from "../components/EntryGate/GateOverlay";
 import { useCountdown } from "../hooks/useCountdown";
 import { useTransition } from "../context/TransitionContext";
+import { useNavigate } from "react-router-dom";
+
 
 const EntryGate = () => {
   const { setIsEntered } = useTransition();
+  const navigate = useNavigate();
   const [showArrows, setShowArrows] = useState(false);
   const [showOverlay, setShowOverlay] = useState(false);
 
@@ -15,7 +18,12 @@ const EntryGate = () => {
     setShowArrows(true);
     setTimeout(() => {
       setShowOverlay(true);
-      setTimeout(() => setIsEntered(true), 2500);
+      setTimeout(()=>{
+      setIsEntered(true);
+      navigate('/home')
+      },2500);
+     
+    
     }, 2000);
   });
 

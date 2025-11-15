@@ -59,7 +59,7 @@ const Navbar = () => {
         <div className="max-w-7xl mx-auto px-5 py-3 flex items-center justify-between gap-5">
           {/* Logo */}
           <div className="flex gap-2 items-center">
-            <img src="vite.svg" alt="logo" className="w-8 h-8" />
+            <img src="Sudhanshu.jpg" alt="logo" className="w-12 h-12 rounded-full" />
             <h2 className="font-extrabold text-lg">Sudhanshu’s Portfolio</h2>
           </div>
 
@@ -85,6 +85,17 @@ const Navbar = () => {
               </div>
             </a>
           </div>
+
+          <button 
+                onClick={() =>{
+                  navigate("/");
+                  setIsOpen(false);
+                  setIsEntered(false)
+                }}
+                className=" items-center justify-center gap-2 border-2 border-red-600 rounded-full px-4 py-2 hover:bg-red-600 transition-all hidden md:flex"
+              >
+                <IoExitOutline /> Exit
+              </button>
 
           {/* Mobile Hamburger */}
           <div className="md:hidden">
