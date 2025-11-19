@@ -60,7 +60,7 @@ const Navbar = () => {
           {/* Logo */}
           <div className="flex gap-2 items-center">
             <img src="Sudhanshu.jpg" alt="logo" className="w-12 h-12 rounded-full" />
-            <h2 className="font-extrabold text-lg">Sudhanshu’s Portfolio</h2>
+            <h2 className="font-extrabold  text-orange-600 text-3xl">Sudhanshu’s Portfolio</h2>
           </div>
 
           {/* Desktop Links */}
