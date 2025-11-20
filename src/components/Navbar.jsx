@@ -34,6 +34,13 @@ const Navbar = () => {
 
   // Keep scroll only for visual "scrolled" state (do NOT auto-close here)
   useEffect(() => {
+  if ("scrollRestoration" in window.history) {
+    window.history.scrollRestoration = "manual";
+  }
+  // optional: restore to top on full reload (if you want)
+  // window.scrollTo(0, 0);
+}, []);
+  useEffect(() => {
     const handleScrollForHeader = () => setScrolled(window.scrollY > 30);
     window.addEventListener("scroll", handleScrollForHeader, { passive: true });
     handleScrollForHeader();
