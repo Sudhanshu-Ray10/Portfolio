@@ -38,7 +38,6 @@ const Navbar = () => {
   // Close on scroll
   useEffect(() => {
     const handleScroll = () => {
-      setIsOpen(false);
       setScrolled(window.scrollY > 30);
     };
     window.addEventListener("scroll", handleScroll);
