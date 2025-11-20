@@ -1,10 +1,9 @@
 import React, { useEffect, useState, useRef } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { FaBars, FaTimes, FaDownload } from "react-icons/fa";
 import { IoExitOutline } from "react-icons/io5";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTransition } from "../context/TransitionContext";
-import { useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -31,21 +30,22 @@ const Navbar = () => {
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
   };
 
-  // Close on scroll
+  // --- Keep scroll only for visual "scrolled" state (do NOT auto-close here) ---
   useEffect(() => {
-  const handleScroll = () => {
-  setScrolled(window.scrollY > 30);
-};
+    const handleScrollForHeader = () => {
+      setScrolled(window.scrollY > 30);
+    };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScrollForHeader, { passive: true });
+    handleScrollForHeader();
+    return () => window.removeEventListener("scroll", handleScrollForHeader);
   }, []);
 
-  // Close if clicked outside
+  // Close if clicked outside (existing behavior)
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (isOpen && menuRef.current && !menuRef.current.contains(e.target)) {
@@ -56,13 +56,46 @@ const Navbar = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isOpen]);
 
+  // Close the mobile menu when user starts scrolling / swiping outside the menu
+  useEffect(() => {
+    // wheel: desktop mouse-wheel / trackpad;
+    // touchstart: mobile touch gesture
+    const handlePotentialClose = (e) => {
+      if (!isOpen) return;
+
+      // If event target is outside the menu, close the menu.
+      // This ensures scrolling *started* outside the menu will close it,
+      // but scrolling that originates inside won't auto-close.
+      if (menuRef.current && !menuRef.current.contains(e.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    window.addEventListener("wheel", handlePotentialClose, { passive: true });
+    window.addEventListener("touchstart", handlePotentialClose, { passive: true });
+
+    return () => {
+      window.removeEventListener("wheel", handlePotentialClose);
+      window.removeEventListener("touchstart", handlePotentialClose);
+    };
+  }, [isOpen]);
+
+  // Close on Escape key for accessibility
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.key === "Escape" && isOpen) setIsOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [isOpen]);
+
   // Handle scroll to highlight active section
   useEffect(() => {
     const handleScroll = () => {
-      const sections = navLinks.map(link => link.to);
+      const sections = navLinks.map((link) => link.to);
       const scrollPosition = window.scrollY + 100; // Offset for navbar height
 
-      sections.forEach(section => {
+      sections.forEach((section) => {
         const element = document.getElementById(section);
         if (element) {
           const { offsetTop, offsetHeight } = element;
@@ -73,7 +106,7 @@ const Navbar = () => {
       });
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll(); // Initial check
     return () => window.removeEventListener("scroll", handleScroll);
   }, [navLinks]);
@@ -83,9 +116,7 @@ const Navbar = () => {
       {/* Navbar Wrapper */}
       <div
         className={`sticky top-0 left-0 w-full z-50 transition-all duration-500  ${
-          scrolled
-            ? "bg-white/70 backdrop-blur-md shadow-lg"
-            : "bg-black text-white"
+          scrolled ? "bg-white/70 backdrop-blur-md shadow-lg" : "bg-black text-white"
         }`}
       >
         <div className="max-w-7xl mx-auto px-5 py-3 flex items-center justify-between gap-5">
@@ -104,7 +135,6 @@ const Navbar = () => {
                 onClick={(e) => {
                   e.preventDefault();
                   scrollToSection(link.to);
-                  
                 }}
                 className={`cursor-pointer hover:text-orange-400 transition-all ${
                   activeSection === link.to ? "active-style" : ""
@@ -125,29 +155,21 @@ const Navbar = () => {
             </a>
           </div>
 
-          <button 
-                onClick={() =>{
-                  navigate("/");
-                  setIsOpen(false);
-                  setIsEntered(false)
-                }}
-                className=" items-center justify-center gap-2 border-2 border-red-600 rounded-full px-4 py-2 hover:bg-red-600 transition-all hidden md:flex"
-              >
-                <IoExitOutline /> Exit
-              </button>
+          <button
+            onClick={() => {
+              navigate("/");
+              setIsOpen(false);
+              setIsEntered(false);
+            }}
+            className=" items-center justify-center gap-2 border-2 border-red-600 rounded-full px-4 py-2 hover:bg-red-600 transition-all hidden md:flex"
+          >
+            <IoExitOutline /> Exit
+          </button>
 
           {/* Mobile Hamburger */}
           <div className="md:hidden">
-            <motion.button
-              onClick={toggleHamburger}
-              whileTap={{ scale: 0.9 }}
-              transition={{ duration: 0.2 }}
-            >
-              <motion.div
-                initial={false}
-                animate={isOpen ? { rotate: 180 } : { rotate: 0 }}
-                transition={{ duration: 0.3 }}
-              >
+            <motion.button onClick={toggleHamburger} whileTap={{ scale: 0.9 }} transition={{ duration: 0.2 }}>
+              <motion.div initial={false} animate={isOpen ? { rotate: 180 } : { rotate: 0 }} transition={{ duration: 0.3 }}>
                 {isOpen ? <FaTimes size={22} /> : <FaBars size={22} />}
               </motion.div>
             </motion.button>
@@ -164,7 +186,7 @@ const Navbar = () => {
             animate={{ opacity: 1, scaleY: 1, y: 0 }}
             exit={{ opacity: 0, scaleY: 0, y: -50 }}
             transition={{ duration: 0.4, ease: "easeOut" }}
-            className="md:hidden flex flex-col items-center gap-5 absolute w-full bg-white  py-4 origin-top z-40 shadow-lg"
+            className="md:hidden flex flex-col items-center gap-5 fixed top-[92px] w-full bg-white  py-4 origin-top z-40 shadow-lg"
           >
             {navLinks.map((link) => (
               <a
@@ -185,20 +207,16 @@ const Navbar = () => {
 
             {/* Resume + Exit */}
             <div className="flex flex-col gap-4 mt-4">
-              <a
-                href="/Resume.pdf"
-                download
-                className="flex items-center gap-2 border-2 border-orange-500 rounded-full px-4 py-2 hover:bg-orange-500 transition-all"
-              >
+              <a href="/Resume.pdf" download className="flex items-center gap-2 border-2 border-orange-500 rounded-full px-4 py-2 hover:bg-orange-500 transition-all">
                 <FaDownload />
                 Resume
               </a>
 
               <button
-                onClick={() =>{
+                onClick={() => {
                   navigate("/");
                   setIsOpen(false);
-                  setIsEntered(false)
+                  setIsEntered(false);
                 }}
                 className="flex items-center justify-center gap-2 border-2 border-red-600 rounded-full px-4 py-2 hover:bg-red-600 transition-all"
               >
