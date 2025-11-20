@@ -35,14 +35,16 @@ const Navbar = () => {
     }
   };
 
-  // Close on scroll
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 30);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+ // Close on scroll
+useEffect(() => {
+  const handleScroll = () => {
+    setScrolled(window.scrollY > 30);
+  };
+
+  window.addEventListener("scroll", handleScroll);
+  return () => window.removeEventListener("scroll", handleScroll);
+}, []);
+
 
   // Close if clicked outside
   useEffect(() => {
