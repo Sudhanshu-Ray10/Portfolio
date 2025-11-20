@@ -63,7 +63,7 @@ const About = () => {
               words={["Sudhanshu Ray.", "a Creative Developer."]}
               loop={true}
               cursor
-              cursorStyle="🔱"
+              cursorStyle="_"
               typeSpeed={80}
               deleteSpeed={50}
               delaySpeed={2000}
@@ -87,12 +87,7 @@ const About = () => {
           {/* Quote Box Improved */}
           <div className="border border-orange-400/70 rounded-2xl p-5 bg-white/50 shadow-sm">
             <p className="text-gray-700 text-lg font-medium text-center">
-              “सरस्वति नमस्तुभ्यं वरदे कामरूपिणि ।
-              विद्यारम्भं करिष्यामि सिद्धिर्भवतु मे सदा ॥”
-            </p>
-            <p className="text-sm text-gray-500 mt-1 text-center">
-             "Salutations to you, O Goddess Saraswati, the giver of boons and fulfiller of wishes. As I begin my studies, please bestow upon me the capacity of right understanding and may I always be successful"
-            </p>
+             "The best way to predict your future is to create it".</p>
           </div>
 
           {/* Hobbies Section */}
