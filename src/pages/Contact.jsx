@@ -85,12 +85,14 @@ const Contact = () => {
             transition={{ duration: 0.6 }}
             className="flex flex-col justify-center backdrop-blur-xl bg-white/10 border border-white/10 p-8 rounded-2xl shadow-lg"
           >
+            <p className="mb-5 text-2xl font-light">If you have any fun creative or meaningful projects in your mind then feel free to reach me out..</p>
             <h3 className="text-2xl font-semibold mb-6 text-orange-400">
               Connect with me
             </h3>
 
             <div className="flex flex-col gap-5 text-lg">
               {/* GitHub */}
+              
               <a
                 href="https://github.com/Sudhanshu-Ray10"
                 target="_blank"
