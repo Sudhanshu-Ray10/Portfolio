@@ -66,7 +66,7 @@ const Skills = () => {
       {/* Heading */}
       <div className="text-center mb-10">
         <h1 className="text-4xl font-bold tracking-wide text-orange-400 drop-shadow-lg">
-          Skills
+          ./Skills
         </h1>
         <p className="text-gray-300 text-sm mt-1">
           Technologies I work with & contribute using!

@@ -27,7 +27,7 @@ const Experience = () => {
       <div className="relative z-10 max-w-5xl mx-auto">
         {/* Section Heading */}
         <h2 className="text-5xl font-bold text-center bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent mb-16">
-          Experience
+          ./Experience
         </h2>
 
         <div className="space-y-12">

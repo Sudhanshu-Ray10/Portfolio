@@ -58,7 +58,7 @@ const Projects = () => {
 
       <div className="relative z-10 max-w-7xl mx-auto text-center">
         <h2 className="text-5xl font-bold text-orange-500 mb-14">
-          My Projects
+          ./My Projects
         </h2>
 
         {/* Swiper Carousel */}

@@ -53,7 +53,7 @@ const About = () => {
           
           {/* Section Title */}
           <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-orange-700 to-orange-500 bg-clip-text text-transparent">
-            About Me
+            ./About Me
           </h2>
 
           {/* Typing Name */}

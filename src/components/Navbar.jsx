@@ -4,9 +4,11 @@ import { FaBars, FaTimes, FaDownload } from "react-icons/fa";
 import { IoExitOutline } from "react-icons/io5";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTransition } from "../context/TransitionContext";
+import { useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { setIsEntered } = useTransition();
   const navLinks = [
     { to: "about", label: "About" },
@@ -19,10 +21,18 @@ const Navbar = () => {
 
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
   const menuRef = useRef();
 
   const toggleHamburger = () => {
     setIsOpen((prev) => !prev);
+  };
+
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   // Close on scroll
@@ -46,14 +56,36 @@ const Navbar = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isOpen]);
 
+  // Handle scroll to highlight active section
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = navLinks.map(link => link.to);
+      const scrollPosition = window.scrollY + 100; // Offset for navbar height
+
+      sections.forEach(section => {
+        const element = document.getElementById(section);
+        if (element) {
+          const { offsetTop, offsetHeight } = element;
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            setActiveSection(section);
+          }
+        }
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Initial check
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [navLinks]);
+
   return (
     <>
       {/* Navbar Wrapper */}
       <div
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 relative ${
+        className={`sticky top-0 left-0 w-full z-50 transition-all duration-500  ${
           scrolled
-            ? "bg-black/70 backdrop-blur-md shadow-lg"
-            : "bg-transparent"
+            ? "bg-white/70 backdrop-blur-md shadow-lg"
+            : "bg-black text-white"
         }`}
       >
         <div className="max-w-7xl mx-auto px-5 py-3 flex items-center justify-between gap-5">
@@ -69,7 +101,14 @@ const Navbar = () => {
               <Link
                 key={link.to}
                 to={`/home#${link.to}`}
-                className="cursor-pointer hover:text-orange-400 transition-all"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection(link.to);
+                  
+                }}
+                className={`cursor-pointer hover:text-orange-400 transition-all ${
+                  activeSection === link.to ? "active-style" : ""
+                }`}
               >
                 {link.label}
               </Link>
@@ -128,14 +167,20 @@ const Navbar = () => {
             className="md:hidden flex flex-col items-center gap-5 absolute w-full bg-white  py-4 origin-top z-40 shadow-lg"
           >
             {navLinks.map((link) => (
-              <Link
+              <a
                 key={link.to}
-                to={`/home#${link.to}`}
-                onClick={() => setIsOpen(false)}
-                className="flex gap-3 text-lg font-medium hover:text-orange-400 transition-all"
+                href={`#${link.to}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection(link.to);
+                  setIsOpen(false);
+                }}
+                className={`flex gap-3 text-lg font-medium hover:text-orange-400 transition-all ${
+                  activeSection === link.to ? "active-style" : ""
+                }`}
               >
                 {link.label}
-              </Link>
+              </a>
             ))}
 
             {/* Resume + Exit */}

@@ -51,7 +51,7 @@ export default function Testimonials() {
 
       <div className="flex flex-col text-center justify-center relative z-10">
         <h1 className="text-5xl font-bold mb-12 bg-gradient-to-r from-orange-700 to-orange-500 bg-clip-text text-transparent">
-          Testimonials
+          ./Testimonials
         </h1>
 
         <div className="relative w-full max-w-3xl mx-auto">
