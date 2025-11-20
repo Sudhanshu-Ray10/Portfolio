@@ -41,7 +41,7 @@ const Footer = () => {
           </a>
 
           <a
-            href="https://wa.me/9508524116"
+            href="https://wa.me/919508524116"
             target="_blank"
             className="hover:text-orange-400 transition transform hover:scale-110"
           >
