@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #121212;
+  --color-foreground: #ffffff;
+  
+  --color-cinematic-blue: #00f2ff;
+  --color-cinematic-red: #ff0044;
+  --color-whatsapp: #25D366;
+  --color-accent-glow-blue: rgba(0, 242, 255, 0.4);
+  --color-accent-glow-red: rgba(255, 0, 68, 0.4);
+
+  --animate-glow: glow 2s ease-in-out infinite alternate;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-marquee: marquee 30s linear infinite;
+
+  @keyframes glow {
+    from {
+      filter: drop-shadow(0 0 10px var(--color-cinematic-blue));
+    }
+    to {
+      filter: drop-shadow(0 0 25px var(--color-cinematic-blue));
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-20px) rotate(5deg);
+    }
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+:root {
+  --background: #121212;
+  --foreground: #ffffff;
+  --selection-bg: #ff0044;
+  --selection-text: #ffffff;
+}
+
+::selection {
+  background: var(--selection-bg);
+  color: var(--selection-text);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  overflow-x: hidden;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Lenis smooth scrolling base styles */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Glow utilities */
+.glow-blue {
+  box-shadow: 0 0 30px 10px var(--color-accent-glow-blue);
+}
+
+.glow-red {
+  box-shadow: 0 0 30px 10px var(--color-accent-glow-red);
+}
+
+.glass-morphism {
+  background: rgba(10, 10, 10, 0.5);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.82);
+}
+
+.nav-glow {
+  box-shadow: 0 0 25px 5px rgba(0, 242, 255, 0.2), 
+              inset 0 0 10px rgba(0, 242, 255, 0.1);
+}
+
+.text-gradient-cinematic {
+  background: linear-gradient(to right, var(--color-cinematic-blue), var(--color-cinematic-red));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
