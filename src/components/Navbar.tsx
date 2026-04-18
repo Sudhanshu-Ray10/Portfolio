@@ -118,7 +118,7 @@ export default function Navbar() {
              <Linkedin className="w-5 h-5" />
            </a>
             <a 
-              href="mailto:sudhanshray10@gmail.com"
+              href="#contact"
               className="px-6 py-2.5 bg-zinc-900 border border-zinc-500/30 text-[10px] font-black uppercase tracking-[0.2em] text-white rounded-full hover:border-cinematic-red hover:shadow-[0_0_15px_rgba(255,0,68,0.4)] transition-all cursor-pointer inline-block"
             >
               Hire Me

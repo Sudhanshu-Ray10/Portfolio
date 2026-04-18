@@ -19,7 +19,7 @@ export default function ContactSection() {
     },
     {
       name: "Connect via Mail",
-      href: "mailto:sudhanshray10@gmail.com",
+      href: "https://mail.google.com/mail/?view=cm&fs=1&to=sudhanshray10@gmail.com",
       icon: <Mail className="w-6 h-6" />,
       color: "white",
     },
@@ -64,8 +64,8 @@ export default function ContactSection() {
               <motion.a
                 key={i}
                 href={link.href}
-                target={isMail ? undefined : "_blank"}
-                rel="noopener noreferrer"
+                target={isMail ? "_self" : "_blank"}
+                rel={isMail ? undefined : "noopener noreferrer"}
                 whileHover={{ y: -5 }}
                 whileTap={{ scale: 0.95 }}
                 className={`flex items-center space-x-3 px-8 py-4 bg-zinc-900/50 border border-zinc-800 hover:border-${link.color}/40 rounded-2xl transition-all group`}

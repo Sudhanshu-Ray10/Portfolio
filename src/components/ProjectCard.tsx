@@ -74,7 +74,7 @@ export default function ProjectCard({
           transform: "translateZ(75px)",
           transformStyle: "preserve-3d",
         }}
-        className="absolute inset-4 flex flex-col pointer-events-none"
+        className="absolute inset-4 flex flex-col"
       >
         {/* Project Header */}
         <div className="flex justify-between items-start mb-4">
@@ -83,7 +83,7 @@ export default function ProjectCard({
               Project #{index + 1}
             </span>
           </div>
-          <div className="flex space-x-3 pointer-events-auto">
+          <div className="flex space-x-3 pointer-events-auto relative z-50">
             {githubUrl && (
               <a
                 href={githubUrl}
