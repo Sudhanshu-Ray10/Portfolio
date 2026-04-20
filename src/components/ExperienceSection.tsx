@@ -33,7 +33,7 @@ export default function ExperienceSection() {
         <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-zinc-900/20 to-transparent" />
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="mx-auto px-4 md:px-6 max-w-6xl relative z-10">
         <div className="text-center mb-20 space-y-4">
              <div className="inline-block px-4 py-1.5 rounded-full border border-cinematic-red/40 bg-cinematic-red/5 backdrop-blur-md">
                 <span className="text-[10px] font-black uppercase tracking-widest text-cinematic-red">Career Progression</span>

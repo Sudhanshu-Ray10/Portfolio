@@ -11,8 +11,8 @@ export default function AboutSection() {
       <div className="absolute -left-24 top-1/4 w-96 h-96 bg-cinematic-blue/10 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute -right-24 bottom-1/4 w-96 h-96 bg-cinematic-red/10 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div className="mx-auto px-4 md:px-6 max-w-6xl">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           
           {/* Left: Interactive Visual */}
           <motion.div
@@ -22,7 +22,7 @@ export default function AboutSection() {
             transition={{ duration: 0.8 }}
             className="relative"
           >
-             <div className="relative aspect-square max-w-md mx-auto group">
+             <div className="relative aspect-square max-w-xs md:max-w-md mx-auto group">
                 <div className="absolute -inset-4 bg-gradient-to-tr from-cinematic-blue/20 to-cinematic-red/20 rounded-[2.5rem] blur-2xl opacity-50 group-hover:opacity-100 transition-opacity duration-700" />
                 <div className="relative w-full h-full rounded-[2rem] overflow-hidden border border-white/10 glass-morphism shadow-2xl">
                    <Image 
@@ -56,7 +56,7 @@ export default function AboutSection() {
           >
             <div className="space-y-4">
               <span className="text-cinematic-blue font-mono tracking-[0.3em] text-xs uppercase font-bold">Crafting Digital Experiences</span>
-              <h2 className="text-5xl md:text-6xl font-black tracking-tighter text-white leading-none">
+              <h2 className="text-3xl md:text-6xl font-black tracking-tighter text-white leading-none">
                 Beyond Just <br />
                 <span className="text-gradient-cinematic">Lines of Code.</span>
               </h2>

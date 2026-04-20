@@ -44,7 +44,7 @@ export default function ProjectsSection() {
       <div className="absolute top-1/2 left-0 w-[600px] h-[600px] bg-cinematic-blue/5 blur-[150px] -translate-x-1/2" />
       <div className="absolute top-1/2 right-0 w-[600px] h-[600px] bg-cinematic-red/5 blur-[150px] translate-x-1/2" />
 
-      <div className="container mx-auto px-6">
+      <div className="mx-auto px-4 md:px-6 max-w-7xl">
         <div className="flex flex-col items-center mb-16 space-y-4">
           <div className="px-4 py-1 border border-cinematic-blue/40 rounded-full bg-cinematic-blue/5 backdrop-blur-sm">
              <span className="text-xs font-mono text-cinematic-blue tracking-tighter uppercase font-black italic">Featured Work</span>

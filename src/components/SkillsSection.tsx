@@ -65,7 +65,7 @@ export default function SkillsSection() {
 
   return (
     <section className="py-24 relative bg-background border-t border-zinc-900">
-      <div className="container mx-auto px-6 max-w-6xl">
+      <div className="mx-auto px-4 md:px-6 max-w-6xl">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
              Professional <span className="text-gradient-cinematic">Abilities</span>

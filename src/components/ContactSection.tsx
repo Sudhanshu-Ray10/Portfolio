@@ -44,7 +44,7 @@ export default function ContactSection() {
       {/* Cinematic Pulse Background */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-cinematic-blue/5 blur-[120px] rounded-full animate-pulse" />
 
-      <div className="container mx-auto px-6 max-w-5xl text-center relative z-10">
+      <div className="mx-auto px-4 md:px-6 max-w-5xl text-center relative z-10">
         <div className="space-y-8">
              <div className="inline-block px-6 py-2 border border-cinematic-blue/30 bg-cinematic-blue/5 rounded-full backdrop-blur-sm">
                 <span className="text-xs font-mono font-black text-cinematic-blue tracking-widest uppercase italic">Get In Touch</span>
@@ -57,7 +57,7 @@ export default function ContactSection() {
           </p>
         </div>
 
-        <div className="mt-16 flex flex-wrap justify-center gap-6">
+        <div className="mt-16 flex flex-wrap justify-center gap-3 md:gap-6">
           {socialLinks.map((link, i) => {
             const isMail = link.href.startsWith('mailto:');
             return (
@@ -68,12 +68,12 @@ export default function ContactSection() {
                 rel={isMail ? undefined : "noopener noreferrer"}
                 whileHover={{ y: -5 }}
                 whileTap={{ scale: 0.95 }}
-                className={`flex items-center space-x-3 px-8 py-4 bg-zinc-900/50 border border-zinc-800 hover:border-${link.color}/40 rounded-2xl transition-all group`}
+                className={`flex items-center space-x-2 md:space-x-3 px-4 md:px-8 py-2 md:py-4 bg-zinc-900/50 border border-zinc-800 hover:border-${link.color}/40 rounded-2xl transition-all group`}
               >
                 <div className={`p-2 bg-background/80 rounded-lg group-hover:scale-110 group-hover:text-${link.color} transition-all`}>
                   {link.icon}
                 </div>
-                <span className="text-xl font-bold text-zinc-300 group-hover:text-white">{link.name}</span>
+                <span className="text-sm md:text-xl font-bold text-zinc-300 group-hover:text-white">{link.name}</span>
                 <ArrowUpRight className="w-4 h-4 text-zinc-600 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
               </motion.a>
             );

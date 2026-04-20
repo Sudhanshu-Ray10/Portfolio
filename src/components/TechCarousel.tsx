@@ -24,7 +24,7 @@ export default function TechCarousel() {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-cinematic-blue to-transparent opacity-30" />
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-cinematic-red to-transparent opacity-30" />
 
-      <div className="container mx-auto px-6 mb-12 text-center">
+      <div className="mx-auto px-4 md:px-6 max-w-6xl mb-12 text-center">
         <h2 className="text-3xl font-bold tracking-tight text-white/50 uppercase">
           Tech <span className="text-white">Stack</span>
         </h2>

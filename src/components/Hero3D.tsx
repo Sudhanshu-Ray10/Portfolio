@@ -110,9 +110,9 @@ export default function Hero3D() {
           {/* 0° Panel */}
           <motion.div
             style={{ opacity: opacity1, scale: scale1 }}
-            className="absolute flex flex-col items-center text-center p-6 space-y-2 mt-[450px]"
+            className="absolute flex flex-col items-center text-center px-4 md:p-6 space-y-2 mt-[450px]"
           >
-            <h1 className="text-5xl md:text-7xl font-black tracking-tight text-white">
+            <h1 className="text-3xl md:text-7xl font-black tracking-tight text-white">
               Sudhanshu <span className="text-gradient-cinematic">Ray</span>
             </h1>
             <p className="text-xl md:text-2xl text-zinc-400 font-medium">
@@ -123,9 +123,9 @@ export default function Hero3D() {
           {/* 90° Panel */}
           <motion.div
             style={{ opacity: opacity2, y: y2 }}
-            className="absolute flex flex-col items-center text-center max-w-lg p-6 space-y-4 mt-[450px]"
+            className="absolute flex flex-col items-center text-center max-w-lg px-4 md:p-6 space-y-4 mt-[450px]"
           >
-            <p className="text-3xl md:text-4xl font-semibold italic text-cinematic-blue leading-tight">
+            <p className="text-lg md:text-4xl font-semibold italic text-cinematic-blue leading-tight">
               "Always learning. Always building. Always improving."
             </p>
           </motion.div>
@@ -133,9 +133,9 @@ export default function Hero3D() {
           {/* 180° Panel */}
           <motion.div
             style={{ opacity: opacity3, y: y3 }}
-            className="absolute flex flex-col items-center text-center max-w-xl p-6 space-y-4 mt-[450px]"
+            className="absolute flex flex-col items-center text-center max-w-xl px-4 md:p-6 space-y-4 mt-[450px]"
           >
-            <p className="text-2xl md:text-3xl font-bold text-white px-8 py-4 border-l-4 border-cinematic-red glass-morphism rounded-r-lg shadow-xl shadow-red-900/20">
+            <p className="text-base md:text-3xl font-bold text-white px-2 md:px-8 py-2 md:py-4 border-l-4 border-cinematic-red glass-morphism rounded-r-lg shadow-xl shadow-red-900/20">
               Passionate developer building scalable and intelligent web apps.
             </p>
           </motion.div>
@@ -143,7 +143,7 @@ export default function Hero3D() {
           {/* 270° Panel */}
           <motion.div
             style={{ opacity: opacity4, y: y4 }}
-            className="absolute flex flex-col items-center text-center p-6 mt-[450px]"
+            className="absolute flex flex-col items-center text-center px-4 md:p-6 mt-[450px]"
           >
             <div className="flex flex-wrap justify-center gap-4">
               {["React", "Node.js", "MongoDB", "Tailwind", "DSA"].map((tech, i) => (
