@@ -29,6 +29,7 @@ export default function AboutSection() {
                      src="/about-visual.png" 
                      alt="Abstract Tech Artwork" 
                      fill 
+                     sizes="(max-width: 768px) 100vw, 50vw"
                      className="object-cover scale-110 group-hover:scale-100 transition-transform duration-1000"
                    />
                    <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />

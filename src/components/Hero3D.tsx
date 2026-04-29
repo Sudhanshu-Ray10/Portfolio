@@ -83,6 +83,7 @@ export default function Hero3D() {
                 src="/profile.png"
                 alt="Sudhanshu Ray"
                 fill
+                sizes="(max-width: 768px) 100vw, 33vw"
                 className="object-cover transition-transform duration-500 scale-105"
                 priority
               />

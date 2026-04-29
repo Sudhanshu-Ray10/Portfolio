@@ -30,7 +30,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} scroll-smooth`}>
-      <body className="bg-background text-foreground selection:bg-cinematic-red selection:text-white">
+      <body className="relative bg-background text-foreground selection:bg-cinematic-red selection:text-white">
         <LenisProvider>
           <Navbar />
           <CustomCursor />
