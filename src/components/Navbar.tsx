@@ -56,7 +56,7 @@ export default function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.8 }}
-      className={`fixed top-0 left-0 right-0 z-[100] relative flex flex-col items-start md:items-center transition-all duration-500 ${isScrolled ? "pt-6" : "pt-8"
+      className={`fixed top-0 left-0 right-0 z-[100] flex flex-col items-start md:items-center transition-all duration-500 ${isScrolled ? "pt-6" : "pt-8"
         }`}
     >
       <div className={`w-fit md:w-full md:max-w-7xl transition-all duration-500 flex items-center justify-between px-4 md:px-6 ${isScrolled
